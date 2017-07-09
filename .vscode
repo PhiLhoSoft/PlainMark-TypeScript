@@ -1,0 +1,12 @@
+{
+	"type": "node",
+	"request": "launch",
+	"name": "Debug",
+	"program": "${workspaceRoot}/dist/server.js",
+	"smartStep": true,
+	"outFiles":
+	[
+		"../dist/**/*.js"
+	],
+	"protocol": "inspector"
+}
