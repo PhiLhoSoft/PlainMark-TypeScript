@@ -8,6 +8,8 @@ import { FragmentDecoration } from "./fragment-decoration";
  */
 export class TextFragment implements Fragment
 {
+	readonly decoration = FragmentDecoration.None;
+	readonly fragments = [];
 	text: string = "";
 
 	constructor(text: string)
@@ -18,15 +20,5 @@ export class TextFragment implements Fragment
 	add(text: string | Fragment): void
 	{
 		this.text += text;
-	}
-
-	getFragments(): Fragment[]
-	{
-		return [];
-	}
-
-	getDecoration(): FragmentDecoration
-	{
-		return FragmentDecoration.None;
 	}
 }

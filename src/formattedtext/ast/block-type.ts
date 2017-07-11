@@ -3,6 +3,7 @@
  */
 export enum BlockType
 {
+	None,
 	Document,
 	Paragraph,
 	Title1,

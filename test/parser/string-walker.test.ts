@@ -26,12 +26,16 @@ describe("StringWalker", () =>
 
 		expect(walker.match('S')).toBe(true);
 		expect(walker.match('s')).toBe(false);
-		expect(walker.match('S', 'i')).toBe(true);
-		expect(walker.match('S', 'I')).toBe(false);
+		expect(walker.match('Si')).toBe(true);
+		expect(walker.match('SI')).toBe(false);
 		expect(walker.match('Simple')).toBe(true);
 		expect(walker.matchAt(3, 'ple')).toBe(true);
 		expect(walker.match('Sample')).toBe(false);
+		expect(walker.match('')).toBe(false);
+		expect(walker.match(undefined)).toBe(false);
 		expect(walker.matchAt(3, 'tuple')).toBe(false);
+		expect(walker.matchAt(0, '')).toBe(false);
+		expect(walker.matchAt(0, undefined)).toBe(false);
 
 		walker.forward();
 
@@ -48,8 +52,8 @@ describe("StringWalker", () =>
 
 		expect(walker.match('i')).toBe(true);
 		expect(walker.match('S')).toBe(false);
-		expect(walker.match('i', 'm')).toBe(true);
-		expect(walker.match('i', 'x')).toBe(false);
+		expect(walker.match('im')).toBe(true);
+		expect(walker.match('ix')).toBe(false);
 		expect(walker.match('impl')).toBe(true);
 		expect(walker.matchAt(2, 'ple')).toBe(true);
 		expect(walker.match('mple')).toBe(false);
@@ -67,8 +71,8 @@ describe("StringWalker", () =>
 
 		expect(walker.match('l')).toBe(true);
 		expect(walker.match('x')).toBe(false);
-		expect(walker.match('l', 'e')).toBe(true);
-		expect(walker.match('x', 'x')).toBe(false);
+		expect(walker.match('le')).toBe(true);
+		expect(walker.match('xx')).toBe(false);
 		expect(walker.match('le')).toBe(true);
 		expect(walker.matchAt(0, 'le')).toBe(true);
 		expect(walker.match('le ')).toBe(false);
@@ -95,7 +99,7 @@ describe("StringWalker", () =>
 		expect(walker.isValid(walker.next)).toBe(false);
 
 		expect(walker.match('x')).toBe(false);
-		expect(walker.match('x', 'x')).toBe(false);
+		expect(walker.match('xx')).toBe(false);
 		expect(walker.match('meet')).toBe(false);
 		expect(walker.matchAt(10, 'beet')).toBe(false);
 
@@ -113,7 +117,7 @@ describe("StringWalker", () =>
 		expect(walker.isValid(walker.next)).toBe(false);
 
 		expect(walker.match('x')).toBe(false);
-		expect(walker.match('x', 'x')).toBe(false);
+		expect(walker.match('xx')).toBe(false);
 		expect(walker.match('me')).toBe(false);
 		expect(walker.matchAt(7, 'bee')).toBe(false);
     });
@@ -162,7 +166,7 @@ describe("StringWalker", () =>
 		expect(walker.current).toBe('e');
 		expect(walker.next).toBe('\n');
 
-		expect(walker.match('e', 'e')).toBe(false);
+		expect(walker.match('ee')).toBe(false);
 		expect(walker.match("en")).toBe(false);
 
 		expect(walker.charAt(-1)).toBe('n');
@@ -208,8 +212,8 @@ describe("StringWalker", () =>
 		expect(walker.current).toBe('e');
 		expect(walker.next).toBe('\r');
 
-		expect(walker.match('e', 'e')).toBe(false);
-		expect(walker.match("en")).toBe(false);
+		expect(walker.match('?')).toBe(false);
+		expect(walker.match("e ")).toBe(false);
 
 		walker.forward();
 

@@ -10,8 +10,9 @@ import { TextFragment } from "./text-fragment";
  */
 export class LinkFragment implements Fragment
 {
-	fragments: Fragment[] = [];
-	url: string = ""; // destination anchor
+	readonly decoration = FragmentDecoration.Link;
+	readonly fragments: Fragment[] = [];
+	readonly url: string = ""; // destination anchor
 
 	constructor(text?: string, url?: string)
 	{
@@ -35,15 +36,5 @@ export class LinkFragment implements Fragment
 		{
 			this.fragments.push(textOrFragment);
 		}
-	}
-
-	getFragments(): Fragment[]
-	{
-		return this.fragments;
-	}
-
-	getDecoration(): FragmentDecoration
-	{
-		return FragmentDecoration.Link;
 	}
 }

@@ -11,7 +11,8 @@ import { TextFragment } from "./text-fragment";
  */
 export class Line implements Block, Fragment
 {
-	fragments: Fragment[] = [];
+	readonly decoration = FragmentDecoration.None;
+	readonly fragments: Fragment[] = [];
 
 	constructor(textOrFragment: string | Fragment)
 	{
@@ -28,15 +29,5 @@ export class Line implements Block, Fragment
 		{
 			this.fragments.push(textOrFragment);
 		}
-	}
-
-	getFragments(): Fragment[]
-	{
-		return this.fragments;
-	}
-
-	getDecoration(): FragmentDecoration
-	{
-		return FragmentDecoration.None;
 	}
 }

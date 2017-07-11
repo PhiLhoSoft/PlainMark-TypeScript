@@ -7,8 +7,8 @@ import { TextFragment } from "./text-fragment";
  */
 export class DecoratedFragment implements Fragment
 {
-	decoration: FragmentDecoration;
-	fragments: Fragment[] = [];
+	readonly decoration: FragmentDecoration;
+	readonly fragments: Fragment[] = [];
 
 	constructor(decoration: FragmentDecoration, firstText?: string | Fragment)
 	{
@@ -29,15 +29,5 @@ export class DecoratedFragment implements Fragment
 		{
 			this.fragments.push(textOrFragment);
 		}
-	}
-
-	getFragments(): Fragment[]
-	{
-		return this.fragments;
-	}
-
-	getDecoration(): FragmentDecoration
-	{
-		return this.decoration;
 	}
 }

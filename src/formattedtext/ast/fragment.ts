@@ -10,10 +10,9 @@ import { FragmentDecoration } from "./fragment-decoration";
  */
 export interface Fragment extends MarkedText
 {
-	getDecoration(): FragmentDecoration;
+	readonly decoration: FragmentDecoration;
+	readonly fragments: Fragment[];
 
 	add(text: string): void;
 	add(fragment: Fragment): void;
-
-	getFragments(): Fragment[];
 }

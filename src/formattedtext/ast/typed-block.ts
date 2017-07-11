@@ -8,8 +8,8 @@ import { Line } from "./line";
  */
 export class TypedBlock implements Block
 {
-	private type: BlockType;
-	private blocks: Block[] = [];
+	readonly type: BlockType;
+	readonly blocks: Block[] = [];
 
 	constructor(type: BlockType, block?: Block)
 	{
@@ -30,14 +30,5 @@ export class TypedBlock implements Block
 		{
 			this.blocks.push(textOrBlock);
 		}
-	}
-
-	getType(): BlockType
-	{
-		return this.type;
-	}
-	getBlocks(): Block[]
-	{
-		return this.blocks;
 	}
 }

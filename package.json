@@ -28,6 +28,7 @@
       "**/test/**/*.test.(ts|js)"
     ],
     "collectCoverage": false,
+    "mapCoverage": true,
     "collectCoverageFrom" : [ "src/**/*.ts" ],
     "coverageDirectory": "coverage",
     "testEnvironment": "node"

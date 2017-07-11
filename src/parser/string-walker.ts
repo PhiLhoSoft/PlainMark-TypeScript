@@ -12,6 +12,9 @@ export class StringWalker
 
 	private walked: string;
 	private cursor: number;
+
+	// Note: ideally, these should be readonly, but still mutable from inside the class...
+
 	/**
 	 * True if we are no an end-of-line character<br>
 	 * (classical CR and LF, but also Unicode EOL code points).
@@ -106,21 +109,17 @@ export class StringWalker
 
 
 	/**
-	 * If the argument is a string, returns true if the string at the current position matches the given string.
-	 * Otherwise, it is a single character ; returns true if the current character is the given one,
-	 * or if two chars are given, returns true if both the current and the next characters are the given ones.
+	 * Compare string to current / next character, then to following characters if needed.
+	 * Quick comparison on one / two chars.
 	 */
-	match(c: string, cc?: string): boolean
+	match(s: string): boolean
 	{
-		if (c.length > 1)
-			return this.matchString(c);
-
-		return c == this.current && (cc ? cc == this.next : true);
-	}
-	private matchString(s: string): boolean
-	{
+		if (s == undefined || s == '')
+			return false; // Whatever...
 		if (s.charAt(0) != this.current)
 			return false;
+		if (s.length == 1)
+			return true;
 		if (s.charAt(1) != this.next)
 			return false;
 		if (s.length == 2)
