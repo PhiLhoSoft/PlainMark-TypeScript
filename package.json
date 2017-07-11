@@ -25,17 +25,16 @@
     },
     "testMatch":
     [
-      "**/*.test.(ts|js)"
+      "**/test/**/*.test.(ts|js)"
     ],
-    "collectCoverage": true,
-    "collectCoverageFrom" : [ "**/*.ts" ],
+    "collectCoverage": false,
+    "collectCoverageFrom" : [ "src/**/*.ts" ],
     "coverageDirectory": "coverage",
     "testEnvironment": "node"
   },
 
   "dependencies":
   {
-    "lodash": "~4.13.0"
   },
   "devDependencies":
   {
@@ -55,6 +54,7 @@
   "scripts":
   {
     "test": "jest",
+    "test:cover": "jest --coverage",
     "start": "npm run build:live",
     "check": "eslint src --ext ts",
     "build:live": "nodemon --exec ./node_modules/.bin/ts-node -- ./index.ts"
